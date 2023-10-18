@@ -78,9 +78,22 @@ const KEYS = [
     }
 ]
 
-const greenBtns = [
+const greenBtns: string[] = [
     'a', 'b', 'c', 'd', 'h', 'l', 'p', 's'
 ]
+
+interface IStyles {
+    width?: string;
+    gridArea?: string;
+    backgroundColor?: string;
+    ':active'?: {
+        backgroundColor?: string;
+        color?: string;
+    };
+    borderRadius?: string;
+    justifyContent?: string;
+    paddingLeft?: string;
+}
 
 
 export const Keyboard = ({pushKey}) => {
@@ -89,7 +102,7 @@ export const Keyboard = ({pushKey}) => {
     }
 
     function getStyles(key) {
-        let styles = {
+        let styles: IStyles = {
             gridArea: key.id,
             backgroundColor: 'antiquewhite',
             ':active': {
