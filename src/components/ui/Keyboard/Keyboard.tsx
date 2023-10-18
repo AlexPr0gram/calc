@@ -78,10 +78,38 @@ const KEYS = [
     }
 ]
 
+const greenBtns = [
+    'a', 'b', 'c', 'd', 'h', 'l', 'p', 's'
+]
+
 
 export const Keyboard = ({pushKey}) => {
     function keyDown(e) {
         pushKey(KEYS.filter(key => key.caption === e.target.id)[0].caption)
+    }
+
+    function getStyles(key) {
+        let styles = {
+            gridArea: key.id,
+            backgroundColor: 'antiquewhite',
+            ':active': {
+                backgroundColor: 'white'
+            }
+        }
+        if (key.id === 'q') {
+            styles.width = '100%',
+            styles.borderRadius = '100px',
+            styles.justifyContent = 'flex-start',
+            styles.paddingLeft = '30px';
+        }
+        if (greenBtns.includes(key.id)) {
+            styles.backgroundColor = '#1DB954'
+            styles[':active'] = {
+                backgroundColor: 'white',
+                color: '#1DB954'
+            }
+        }
+        return styles
     }
     return (
         <div className="container">
@@ -89,7 +117,9 @@ export const Keyboard = ({pushKey}) => {
                 return (
                     <div
                         id={key.caption}
-                        className={'button' + ' ' + key.id}
+                        style={getStyles(key)}
+                        data-id={key.id}
+                        className='button'
                         onClick={keyDown}>
                         {key.caption}
                     </div>
