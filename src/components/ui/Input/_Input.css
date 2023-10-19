@@ -18,3 +18,17 @@
     align-items: center;
     justify-content: end;
 }
+
+.container-result {display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-weight: 100;
+    color: rgb(140, 137, 137);
+    font-weight:lighter;
+    font-size: 45px;
+
+}

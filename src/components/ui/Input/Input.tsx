@@ -1,9 +1,15 @@
 import './_Input.css'
 
-export const Input = ({string}) => {
+export const Input = ({input, result}) => {
     return (
-        <div className="container-input">
-            {string}
-        </div>
+        <>
+
+            <div className="container-result">
+                {result}
+            </div>
+            <div className="container-input">
+                {input}
+            </div>
+        </>
     )
 }
