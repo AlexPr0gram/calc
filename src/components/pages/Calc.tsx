@@ -8,16 +8,29 @@ export const Calc = () => {
     const [result, setResult] = useState<string>('');
     function keyDownHandler(value) {
         switch (value) {
-            case 'AC':
+            case 'clean':
                 setInput('0');
                 setResult('');
                 break;
-            case 'C':
-                setInput(input.toString().slice(0, -1));
+            case 'backspace':
+                const results = input.toString().slice(0, -1);
+                if (results.length) {
+                    setInput(results);
+                    if (!['/', '+', '-', '*', '%'].includes(results[results.length - 1])) {
+                        setResult(String(eval(results)));
+                    } else {
+                        setResult(String(eval(results.slice(0, -1))));
+                    }
+                } else {
+                    setInput('0');
+                    setResult('');
+                }
                 break;
-            case '×':
+            case '*':
                 setInput(String(input + value))
-                setResult(String(eval(input + value)));
+                if (!['/', '+', '-', '*', '%'].includes(value)) {
+                    setResult(String(eval(input + value)));
+                }
                 break;
             case '=':
                 setInput(String(result));
@@ -26,10 +39,14 @@ export const Calc = () => {
             default:
                 if (input === '0') {
                     setInput(String(value));
-                    setResult(String(eval(value)));
+                    if (!['/', '+', '-', '*', '%'].includes(value)) {
+                        setResult(String(eval(value)));
+                    };
                 } else {
                     setInput(String(input + value))
-                    setResult(String(eval(input + value)));
+                    if (!['/', '+', '-', '*', '%'].includes(value)) {
+                        setResult(String(eval(input + value)));
+                    }
                 }
                 break;
         }

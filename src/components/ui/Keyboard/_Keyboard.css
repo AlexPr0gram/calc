@@ -24,7 +24,6 @@
     width: 100%;
     padding: 0 10px 0 10px;
     box-sizing: border-box;
-    /* grid-template-columns: repeat(4, 50px); */
 }
 
 .button {
@@ -34,4 +33,22 @@
     border-radius: 50%;
     width: var(--btn-size);
     height: var(--btn-size);
+
+    background-color: rgb(250, 235, 215);
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:nth-child(-n+4),
+    &:nth-child(4n),
+    &:last-child {
+        background-color: #1DB954;
+        &:active {
+            background-color: #6ed693;
+            color: white;
+        }
+    }
+
+    &:active {
+        background-color: rgb(245, 240, 234)
+    }
 }
+

@@ -8,7 +8,11 @@ export const Input = ({input, result}) => {
                 {result}
             </div>
             <div className="container-input">
-                {input}
+                {input
+                    .replaceAll('/', '÷')
+                    .replaceAll('*', '×')
+                    .replaceAll('.', ',')
+                }
             </div>
         </>
     )
